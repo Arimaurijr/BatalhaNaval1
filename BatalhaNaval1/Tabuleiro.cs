@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,13 +46,24 @@ namespace BatalhaNaval1
         */
         public void Exibicao()
         {
-            for (int linha = 0; linha < Dimensoes.LINHA; linha++)
+            Console.WriteLine("     A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+                "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
+            for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
-                for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
+                if (i <= 8)
                 {
-                    Console.Write(tabuleiro[linha, coluna] + " ");
+                    Console.WriteLine();
+                    Console.Write($" {i + 1}-");
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.WriteLine();
+                    Console.Write($"{i + 1}-");
+                }
+                for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                {
+                    Console.Write($"|  {tabuleiro[i, j]}  |");
+                }
             }
         }
 
@@ -61,7 +73,7 @@ namespace BatalhaNaval1
             {
                 for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
                 {
-                    tabuleiro[linha, coluna] = '.';
+                    tabuleiro[linha, coluna] = '~';
                 }
             }
         }

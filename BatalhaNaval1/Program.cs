@@ -29,8 +29,8 @@ internal class Program
            tabuleiro.PlotarPecasNoTabuleiro(tamanho);
             tamanho++;
         }
-        
-        tabuleiro.Exibicao();
-        */
+
+        tabuleiro.Exibicao();*/
+
     }
 }
