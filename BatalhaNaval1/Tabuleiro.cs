@@ -119,19 +119,19 @@ namespace BatalhaNaval1
         }
         public void Exibicao()
         {
-            Console.WriteLine("     A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
-                "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
+            Console.WriteLine("     1  ||  2  ||  3  ||  4  ||  5  ||  6  ||  7  ||  8  ||  9  ||  10  ||  11||  12 " +
+                "||  13  ||  14 || 15  ||  16 ||  17  ||  18 ||  19 ||  20 ||");
             for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
-                if (i <= 8)
+                if (i <= 9)
                 {
                     Console.WriteLine();
-                    Console.Write($" {i + 1}-");
+                    Console.Write($" {i}-");
                 }
                 else
                 {
                     Console.WriteLine();
-                    Console.Write($"{i + 1}-");
+                    Console.Write($"{i}-");
                 }
                 for (int j = 0; j < tabuleiro.GetLength(1); j++)
                 {
@@ -194,7 +194,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[l, coluna] != '.')
+                if (tabuleiro[l, coluna] != '~')
                 {
                     verifica = false;
                 }
@@ -213,7 +213,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[linha, c] != '.')
+                if (tabuleiro[linha, c] != '~')
                 {
                     verifica = false;
                 }
