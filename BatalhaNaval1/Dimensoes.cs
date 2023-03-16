@@ -11,6 +11,7 @@ namespace BatalhaNaval1
         public const int LINHA = 20;
         public const int COLUNA = 20;
 
-
+        public const int JOGADOR_1 = 1;
+        public const int JOGADOR_2 = 2;
     }
 }

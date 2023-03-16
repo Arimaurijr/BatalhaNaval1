@@ -13,10 +13,34 @@ namespace BatalhaNaval1
             this.Nome = "Submarino";
             this.Tamanho = 2;
         }
+        public Submarino(int tipo_de_jogador)
+        {
+            this.Nome = "Submarino";
+            this.Tamanho = 2;
+
+            if (tipo_de_jogador == 1)
+            {
+                this.Caracter = 'S';
+            }
+            else
+            {
+                this.Caracter = 's';
+            }
+        }
 
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public void DecrementarVida()
+        {
+            this.Vida -= 1;
+
+            if (this.Vida == 0)
+            {
+                this.jogador.DecrementarVida();
+            }
         }
     }
 }
