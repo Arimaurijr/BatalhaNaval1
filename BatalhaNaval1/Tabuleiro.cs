@@ -11,6 +11,7 @@ namespace BatalhaNaval1
     {
         private char[,] tabuleiro;
         private char _caracter;
+        //private char[,] matriz_exibicao[]
 
         private PortaAviao[] portaAviao = new PortaAviao[2];
         private Submarino[] submarino = new Submarino[2];
@@ -36,9 +37,9 @@ namespace BatalhaNaval1
         }
         public void RecebePortaAviao(PortaAviao portaAviao, int tipo_de_jogador)
         {
-            if(tipo_de_jogador == 1)
+            if (tipo_de_jogador == 1)
             {
-                this.portaAviao[0] = portaAviao; 
+                this.portaAviao[0] = portaAviao;
             }
             else
             {
@@ -47,7 +48,7 @@ namespace BatalhaNaval1
         }
         public void RecebeSubmarino(Submarino submarino, int tipo_de_jogador)
         {
-            if(tipo_de_jogador == 1)
+            if (tipo_de_jogador == 1)
             {
                 this.submarino[0] = submarino;
             }
@@ -58,7 +59,7 @@ namespace BatalhaNaval1
         }
         public void RecebeDestroyer(Destroyer destroyer, int tipo_de_jogador)
         {
-            if(tipo_de_jogador == 1)
+            if (tipo_de_jogador == 1)
             {
                 this.destroyer[0] = destroyer;
             }
@@ -72,55 +73,64 @@ namespace BatalhaNaval1
         {
             int verificacao = 0;
 
-            switch(tabuleiro[linha,coluna])
+            switch (tabuleiro[linha, coluna])
             {
                 case 'D':
                     tabuleiro[linha, coluna] = 'X';
                     destroyer[0].DecrementarVida();
                     verificacao = 1;
-                break;
+                    break;
 
                 case 'd':
                     tabuleiro[linha, coluna] = 'x';
                     destroyer[1].DecrementarVida();
                     verificacao = 2;
-                break;
+                    break;
 
                 case 'P':
                     tabuleiro[linha, coluna] = 'X';
                     portaAviao[0].DecrementarVida();
                     verificacao = 1;
-                break;
+                    break;
 
                 case 'p':
                     tabuleiro[linha, coluna] = 'x';
                     portaAviao[1].DecrementarVida();
                     verificacao = 2;
-                break;
+                    break;
 
                 case 'S':
                     tabuleiro[linha, coluna] = 'X';
                     submarino[0].DecrementarVida();
                     verificacao = 1;
-                break;
+                    break;
 
                 case 's':
                     tabuleiro[linha, coluna] = 'x';
                     submarino[1].DecrementarVida();
                     verificacao = 2;
-                break;
+                    break;
+                case '#' :
+                    verificacao = 3;
+                    break;
+                case 'X':
+                    verificacao = 3;
+                    break;
+                case 'x':
+                    verificacao = 3;
+                    break;
 
                 default:
                     tabuleiro[linha, coluna] = '#';
-                break;
+                    break;
             }
 
             return verificacao;
         }
         public void Exibicao()
         {
-            Console.WriteLine("     1  ||  2  ||  3  ||  4  ||  5  ||  6  ||  7  ||  8  ||  9  ||  10  ||  11||  12 " +
-                "||  13  ||  14 || 15  ||  16 ||  17  ||  18 ||  19 ||  20 ||");
+            Console.WriteLine("      0  ||  1  ||  2  ||  3  ||  4  ||  5  ||  6  ||  7  ||  8  ||  9  || 10 ||  11 " +
+                "||  12  ||  13 || 14  || 15 ||  16  || 17 ||  18 ||  19 ||");
             for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
                 if (i <= 9)
@@ -146,11 +156,11 @@ namespace BatalhaNaval1
             {
                 for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
                 {
-                    tabuleiro[linha, coluna] = '~';
+                    tabuleiro[linha, coluna] = '.';
                 }
             }
         }
-      
+
         public void PlotarPecasNoTabuleiro(int tamanho)
         {
             bool plotar = false;
@@ -194,7 +204,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[l, coluna] != '~')
+                if (tabuleiro[l, coluna] != '.')
                 {
                     verifica = false;
                 }
@@ -213,7 +223,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[linha, c] != '~')
+                if (tabuleiro[linha, c] != '.')
                 {
                     verifica = false;
                 }
@@ -267,7 +277,7 @@ namespace BatalhaNaval1
             }
 
             return verifica;
-        }  
+        }
 
     }
 }

@@ -28,6 +28,7 @@ namespace BatalhaNaval1
         }
         public void DecrementarVida()
         {
+            
             this.Vida -= 1;
         }
 
