@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,10 +12,10 @@ namespace BatalhaNaval1
         private char[,] tabuleiro;
         private char _caracter;
 
-        /*
-        private Jogador jogador_1;
-        private Jogador jogador_2;  
-        */
+        private PortaAviao[] portaAviao = new PortaAviao[2];
+        private Submarino[] submarino = new Submarino[2];
+        private Destroyer[] destroyer = new Destroyer[2];
+
 
         private Random posicao = new Random();
         private Random random_linha = new Random();
@@ -33,25 +34,109 @@ namespace BatalhaNaval1
         {
             this._caracter = _caracter;
         }
-        /*
-        public void ConectarJogador1(Jogador jogador)
+        public void RecebePortaAviao(PortaAviao portaAviao, int tipo_de_jogador)
         {
-            this.jogador_1 = jogador;
+            if(tipo_de_jogador == 1)
+            {
+                this.portaAviao[0] = portaAviao; 
+            }
+            else
+            {
+                this.portaAviao[1] = portaAviao;
+            }
         }
-        public void ConectarJogador2(Jogador jogador)
+        public void RecebeSubmarino(Submarino submarino, int tipo_de_jogador)
         {
-            this.jogador_2 = jogador;
+            if(tipo_de_jogador == 1)
+            {
+                this.submarino[0] = submarino;
+            }
+            else
+            {
+                this.submarino[1] = submarino;
+            }
         }
-        */
+        public void RecebeDestroyer(Destroyer destroyer, int tipo_de_jogador)
+        {
+            if(tipo_de_jogador == 1)
+            {
+                this.destroyer[0] = destroyer;
+            }
+            else
+            {
+                this.destroyer[1] = destroyer;
+            }
+        }
+
+        public int MarcarNoTabuleiro(int linha, int coluna)
+        {
+            int verificacao = 0;
+
+            switch(tabuleiro[linha,coluna])
+            {
+                case 'D':
+                    tabuleiro[linha, coluna] = 'X';
+                    destroyer[0].DecrementarVida();
+                    verificacao = 1;
+                break;
+
+                case 'd':
+                    tabuleiro[linha, coluna] = 'x';
+                    destroyer[1].DecrementarVida();
+                    verificacao = 2;
+                break;
+
+                case 'P':
+                    tabuleiro[linha, coluna] = 'X';
+                    portaAviao[0].DecrementarVida();
+                    verificacao = 1;
+                break;
+
+                case 'p':
+                    tabuleiro[linha, coluna] = 'x';
+                    portaAviao[1].DecrementarVida();
+                    verificacao = 2;
+                break;
+
+                case 'S':
+                    tabuleiro[linha, coluna] = 'X';
+                    submarino[0].DecrementarVida();
+                    verificacao = 1;
+                break;
+
+                case 's':
+                    tabuleiro[linha, coluna] = 'x';
+                    submarino[1].DecrementarVida();
+                    verificacao = 2;
+                break;
+
+                default:
+                    tabuleiro[linha, coluna] = '#';
+                break;
+            }
+
+            return verificacao;
+        }
         public void Exibicao()
         {
-            for (int linha = 0; linha < Dimensoes.LINHA; linha++)
+            Console.WriteLine("     1  ||  2  ||  3  ||  4  ||  5  ||  6  ||  7  ||  8  ||  9  ||  10  ||  11||  12 " +
+                "||  13  ||  14 || 15  ||  16 ||  17  ||  18 ||  19 ||  20 ||");
+            for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
-                for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
+                if (i <= 9)
                 {
-                    Console.Write(tabuleiro[linha, coluna] + " ");
+                    Console.WriteLine();
+                    Console.Write($" {i}-");
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.WriteLine();
+                    Console.Write($"{i}-");
+                }
+                for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                {
+                    Console.Write($"|  {tabuleiro[i, j]}  |");
+                }
             }
         }
 
@@ -61,39 +146,11 @@ namespace BatalhaNaval1
             {
                 for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
                 {
-                    tabuleiro[linha, coluna] = '.';
+                    tabuleiro[linha, coluna] = '~';
                 }
             }
         }
-        /*
-        public int VerificaAtaque(int linha, int coluna, Jogador atual, Jogador oponente)
-        {
-            int situacao = 0;
-
-            if (tabuleiro[linha,coluna] == oponente.GetCaracter())
-            {
-                situacao = 1;
-                tabuleiro[linha, coluna] = 'X';
-            }
-            else
-            {
-                if (tabuleiro[linha,coluna] == atual.GetCaracter())
-                {
-                    situacao = 2;
-                    tabuleiro[linha, coluna] = 'X';
-                }
-                else
-                {
-                    situacao = 3;
-                    tabuleiro[linha, coluna] = '#';
-                }
-
-            }
-
-
-            return situacao;
-        }
-        */
+      
         public void PlotarPecasNoTabuleiro(int tamanho)
         {
             bool plotar = false;
@@ -137,7 +194,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[l, coluna] != '.')
+                if (tabuleiro[l, coluna] != '~')
                 {
                     verifica = false;
                 }
@@ -156,7 +213,7 @@ namespace BatalhaNaval1
 
             while ((verifica == true) && (cont < tamanho))
             {
-                if (tabuleiro[linha, c] != '.')
+                if (tabuleiro[linha, c] != '~')
                 {
                     verifica = false;
                 }
