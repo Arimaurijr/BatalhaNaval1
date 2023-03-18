@@ -17,6 +17,7 @@ namespace BatalhaNaval1
         {
             this.Nome = "Submarino";
             this.Tamanho = 2;
+            this.Vida = 2;
 
             if (tipo_de_jogador == 1)
             {
@@ -39,6 +40,7 @@ namespace BatalhaNaval1
 
             if (this.Vida == 0)
             {
+                Console.WriteLine(base.ToString());
                 this.jogador.DecrementarVida();
             }
         }

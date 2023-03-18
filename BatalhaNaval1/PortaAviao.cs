@@ -17,6 +17,7 @@ namespace BatalhaNaval1
         {
             this.Nome = "Porta avião";
             this.Tamanho = 4;
+            this.Vida = 4;
 
             if (tipo_de_jogador == 1)
             {
@@ -38,6 +39,7 @@ namespace BatalhaNaval1
 
             if (this.Vida == 0)
             {
+                Console.WriteLine(base.ToString());
                 this.jogador.DecrementarVida();
             }
         }

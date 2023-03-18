@@ -8,8 +8,9 @@ namespace BatalhaNaval1
 {
     internal class Destroyer : Navio
     {
-        public Destroyer()
+        public Destroyer()   
         {
+
             this.Nome = "Destroyer";
             this.Tamanho = 3;
         }
@@ -18,6 +19,7 @@ namespace BatalhaNaval1
         {
             this.Nome = "Destroyer";
             this.Tamanho = 3;
+            this.Vida = 3;
 
             if (tipo_de_jogador == 1)
             {
@@ -40,6 +42,7 @@ namespace BatalhaNaval1
 
             if (this.Vida == 0)
             {
+                Console.WriteLine(base.ToString());
                 this.jogador.DecrementarVida();
             }
         }
