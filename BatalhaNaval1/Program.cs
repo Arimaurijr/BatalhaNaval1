@@ -63,10 +63,10 @@ tabuleiro.PlotarPecasNoTabuleiro(portaAviao1.Tamanho);
 tabuleiro.setCaracter(portaAviao2.Caracter);
 tabuleiro.PlotarPecasNoTabuleiro(portaAviao2.Tamanho);
 
-Console.WriteLine("Digite o nome do jogador 1:");
+Console.Write("Digite o nome do jogador 1: ");
 jogador1.Nome = Console.ReadLine();
 
-Console.WriteLine("Digite o nome do jogador 2:");
+Console.Write("Digite o nome do jogador 2: ");
 jogador2.Nome = Console.ReadLine();
 
 
@@ -80,9 +80,10 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
     cont++;
     int ataque;
     int linha = 0, coluna = 0;
+    string coord = null;
     bool entrada = false;
-    Console.WriteLine("\nVida do jogador1: " + jogador1.Vida);
-    Console.WriteLine("Vida do jogador2: " + jogador2.Vida);
+    Console.WriteLine($"\nVida de {jogador1.Nome}: " + jogador1.Vida);
+    Console.WriteLine($"Vida de {jogador2.Nome}: " + jogador2.Vida);
 
     if (cont % 2 != 0)
     {
@@ -101,16 +102,17 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 //Console.Clear();
                 tabuleiro.Exibicao();
                 Console.WriteLine();
-                Console.Write("JOGADOR A - ");
+                Console.Write($"JOGADOR {jogador1.Nome} - ");
                 Console.Write("DIGITE A LINHA: ");
-                linha = int.Parse(Console.ReadLine());
+
+                linha = jogador1.CheckLine();
 
             } while (linha < 0 || linha >= Dimensoes.LINHA);
 
             do
             {
                 Console.Write("DIGITE A COLUNA: ");
-                coluna = int.Parse(Console.ReadLine());
+                coluna = jogador1.CheckColumn(coord = Console.ReadLine());
 
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
 
@@ -136,7 +138,7 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             }
             if (ataque == 3)
             {
-                Console.WriteLine("Essa posição já foi preenchida.");
+                Console.WriteLine($"Essa posição já foi preenchida jogador {jogador1.Nome}.");
                 Console.ReadKey();
                 entrada = true;
             }
@@ -153,20 +155,21 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             if (entrada == true)
             {
                 Console.WriteLine();
-                Console.WriteLine("CONTINUE JOGADOR B");
+                Console.WriteLine($"CONTINUE JOGADOR {jogador2.Nome}");
             }
             do
             {
-                Console.Write("JOGADOR B -");
+                Console.Write($"JOGADOR {jogador2.Nome}");
                 Console.Write(" DIGITE A LINHA: ");
-                linha = int.Parse(Console.ReadLine());
+
+                linha = jogador2.CheckLine();
 
             } while (linha < 0 || linha >= Dimensoes.LINHA);
 
             do
             {
                 Console.Write("DIGITE A COLUNA: ");
-                coluna = int.Parse(Console.ReadLine());
+                coluna = jogador2.CheckColumn(coord = Console.ReadLine());
 
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
 
@@ -192,7 +195,7 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             }
             if (ataque == 3)
             {
-                Console.WriteLine("Essa posição já foi preenchida.");
+                Console.WriteLine($"Essa posição já foi preenchida jogador {jogador2.Nome}.");
                 Console.ReadKey();
                 entrada = true;
             }

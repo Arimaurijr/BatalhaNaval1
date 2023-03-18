@@ -129,8 +129,8 @@ namespace BatalhaNaval1
         }
         public void Exibicao()
         {
-            Console.WriteLine("      0  ||  1  ||  2  ||  3  ||  4  ||  5  ||  6  ||  7  ||  8  ||  9  || 10 ||  11 " +
-                "||  12  ||  13 || 14  || 15 ||  16  || 17 ||  18 ||  19 ||");
+            Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+                "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
             for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
                 if (i <= 9)
@@ -147,7 +147,7 @@ namespace BatalhaNaval1
                 {
                     Console.Write($"|  {tabuleiro[i, j]}  |");
                 }
-            }
+            } 
         }
 
         public void Inicializacao()

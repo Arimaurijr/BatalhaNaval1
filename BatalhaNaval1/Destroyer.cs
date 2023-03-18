@@ -8,8 +8,9 @@ namespace BatalhaNaval1
 {
     internal class Destroyer : Navio
     {
-        public Destroyer()
+        public Destroyer()   
         {
+
             this.Nome = "Destroyer";
             this.Tamanho = 3;
         }
