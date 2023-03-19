@@ -28,20 +28,6 @@ namespace BatalhaNaval1
                 this.Caracter = 'p';
             }
         }
-        public override string ToString()
-        {
-            return base.ToString();
-        }
 
-        public void DecrementarVida()
-        {
-            this.Vida -= 1;
-
-            if (this.Vida == 0)
-            {
-                Console.WriteLine(base.ToString());
-                this.jogador.DecrementarVida();
-            }
-        }
     }
 }

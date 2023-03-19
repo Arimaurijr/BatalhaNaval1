@@ -21,10 +21,20 @@ namespace BatalhaNaval1
             this.jogador = jogador;
         }
 
-        public override string ToString()
+        //public override string ToString()
+        //{
+        //    return Nome + " foi destruído !";
+        //}
+
+        public void DecrementarVida()
         {
-            return Nome + " foi destruído !";
+            this.Vida -= 1;
+
+            if (this.Vida == 0)
+            {
+                Console.WriteLine(Nome + " foi destruído");
+                this.jogador.DecrementarVida();
+            }
         }
-       
     }
 }
