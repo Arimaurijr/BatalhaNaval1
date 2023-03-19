@@ -10,6 +10,7 @@ namespace BatalhaNaval1
     internal class Tabuleiro
     {
         private char[,] tabuleiro;
+        private char[,] tabuleiroUser;
         private char _caracter;
         //private char[,] matriz_exibicao[]
 
@@ -29,6 +30,7 @@ namespace BatalhaNaval1
         public Tabuleiro()
         {
             tabuleiro = new char[Dimensoes.LINHA, Dimensoes.COLUNA];
+            tabuleiroUser = new char[Dimensoes.LINHA, Dimensoes.COLUNA];
         }
 
         public void setCaracter(char _caracter)
@@ -129,9 +131,34 @@ namespace BatalhaNaval1
         }
         public void Exibicao()
         {
+           // Para exibir matriz original descomentar esse codigo
+            /* Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+    "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");*/
+            for (int i = 0; i < tabuleiro.GetLength(0); i++)
+            {
+                // Para exibir matriz original descomentar esse codigo
+                /* if (i <= 9)
+                {
+                    Console.WriteLine();
+                    Console.Write($" {i}-");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.Write($"{i}-");
+                }
+               */
+                for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                {
+                    // Para exibir matriz original descomentar esse codigo
+                    /*Console.Write($"|  {tabuleiro[i, j]}  |");*/
+                    tabuleiroUser[i,j] = tabuleiro[i, j];
+                }
+            }
+            
             Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
                 "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
-            for (int i = 0; i < tabuleiro.GetLength(0); i++)
+            for (int i = 0; i < tabuleiroUser.GetLength(0); i++)
             {
                 if (i <= 9)
                 {
@@ -143,9 +170,16 @@ namespace BatalhaNaval1
                     Console.WriteLine();
                     Console.Write($"{i}-");
                 }
-                for (int j = 0; j < tabuleiro.GetLength(1); j++)
+
+                for (int j = 0; j < tabuleiroUser.GetLength(1); j++)
                 {
-                    Console.Write($"|  {tabuleiro[i, j]}  |");
+                    if (tabuleiroUser[i, j] == 'd' || tabuleiroUser[i, j] == 'D' ||
+                        tabuleiroUser[i, j] == 'p' || tabuleiroUser[i, j] == 'P' ||
+                        tabuleiroUser[i, j] == 's' || tabuleiroUser[i, j] == 'S')
+                    {
+                        tabuleiroUser[i, j] = '.';
+                    }
+                    Console.Write($"|  {tabuleiroUser[i, j]}  |");
                 }
             } 
         }
