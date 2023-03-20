@@ -112,7 +112,7 @@ namespace BatalhaNaval1
                     submarino[1].DecrementarVida();
                     verificacao = 2;
                     break;
-                case '#' :
+                case '#':
                     verificacao = 3;
                     break;
                 case 'X':
@@ -129,11 +129,37 @@ namespace BatalhaNaval1
 
             return verificacao;
         }
+        public void ExibirTeste()
+        {
+            //Para exibir matriz original descomentar esse codigo
+            Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+   "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
+
+            for (int i = 0; i < tabuleiro.GetLength(0); i++)
+            {
+                // Para exibir matriz original descomentar esse codigo
+                 if (i <= 9)
+                {
+                    Console.WriteLine();
+                    Console.Write($" {i}-");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.Write($"{i}-");
+                }
+               
+                for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                {
+                    // Para exibir matriz original descomentar esse codigo
+                    Console.Write($"|  {tabuleiro[i, j]}  |");
+                    tabuleiroUser[i, j] = tabuleiro[i, j];
+                }
+            }
+        }
         public void Exibicao()
         {
-           // Para exibir matriz original descomentar esse codigo
-            /* Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
-    "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");*/
+
             for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
                 // Para exibir matriz original descomentar esse codigo

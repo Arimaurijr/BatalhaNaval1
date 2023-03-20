@@ -51,7 +51,7 @@ namespace BatalhaNaval1
             bool success = int.TryParse(Console.ReadLine(), out linha);
             while (success != true)
             {
-                Console.WriteLine("Não Digite caractere por favor.Continue: ");
+                Console.WriteLine("Não Digite caracteres por favor. Digite um valor inteiro: ");
                 success = int.TryParse(Console.ReadLine(), out linha);
             }
             return linha;

@@ -72,7 +72,7 @@ jogador2.Nome = Console.ReadLine();
 
 //tabuleiro.Exibicao();
 
-
+//tabuleiro.ExibirTeste();
 int cont = 0;
 
 while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
@@ -82,6 +82,8 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
     int linha = 0, coluna = 0;
     string coord = null;
     bool entrada = false;
+
+    Console.WriteLine();
     Console.WriteLine($"\nVida de {jogador1.Nome}: " + jogador1.Vida);
     Console.WriteLine($"Vida de {jogador2.Nome}: " + jogador2.Vida);
 
@@ -89,7 +91,7 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
     {
         do
         {
-
+            tabuleiro.Exibicao();
             if (entrada == true)
             {
                 tabuleiro.Exibicao();
@@ -97,25 +99,35 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 Console.WriteLine("CONTINUE JOGADOR A");
             }
 
+            bool flag = false;
+
             do
             {
-                //Console.Clear();
-                tabuleiro.Exibicao();
+
+                if (flag)
+                {
+                    Console.WriteLine("\nValor fora do intervalo !");
+                }
                 Console.WriteLine();
-                Console.Write($"JOGADOR {jogador1.Nome} - ");
-                Console.Write("DIGITE A LINHA: ");
+                Console.Write($"\nJOGADOR {jogador1.Nome} - ");
+                Console.Write("DIGITE A LINHA[0 - 19]: ");
 
                 linha = jogador1.CheckLine();
+                flag = true;
 
             } while (linha < 0 || linha >= Dimensoes.LINHA);
-
+            flag = false;
             do
             {
-                Console.Write("DIGITE A COLUNA: ");
+                if (flag)
+                {
+                    Console.WriteLine("\n Caracter inválido!");
+                }
+                Console.Write("DIGITE A COLUNA[A - T]: ");
                 coluna = jogador1.CheckColumn(coord = Console.ReadLine());
+                flag = true;
 
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
-
 
             ataque = jogador1.Atacar(linha, coluna);
 
@@ -142,14 +154,15 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 Console.ReadKey();
                 entrada = true;
             }
-
+            
         } while (entrada == true && jogador2.Vida > 0);
-        //Console.Clear();
-        tabuleiro.Exibicao();
+        //tabuleiro.Exibicao();
 
     }
     else
     {
+        tabuleiro.Exibicao();
+        bool flag = false;
         do
         {
             if (entrada == true)
@@ -159,18 +172,27 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             }
             do
             {
-                Console.Write($"JOGADOR {jogador2.Nome}");
-                Console.Write(" DIGITE A LINHA: ");
+                if (flag)
+                {
+                    Console.WriteLine("\n Caracter inválido!");
+                }
+                Console.Write($"\nJOGADOR {jogador2.Nome}");
+                Console.Write(" DIGITE A LINHA[0 - 19]: ");
 
                 linha = jogador2.CheckLine();
-
+                flag = true;
             } while (linha < 0 || linha >= Dimensoes.LINHA);
 
+            flag = false;
             do
             {
-                Console.Write("DIGITE A COLUNA: ");
+                if (flag)
+                {
+                    Console.WriteLine("\nValor fora do intervalo !");
+                }
+                Console.Write("DIGITE A COLUNA[A - T]: ");
                 coluna = jogador2.CheckColumn(coord = Console.ReadLine());
-
+                flag = true;
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
 
             ataque = jogador2.Atacar(linha, coluna);
@@ -181,14 +203,12 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 {
                     Console.WriteLine("VOCÊ ATIROU CONTRA A PRÓPRIA EMBARCAÇÃO !!!");
                     Console.ReadKey();
-                    //Console.Clear();
                 }
 
                 entrada = false;
             }
             if (ataque == 1)
             {
-                //Console.Clear();
                 Console.WriteLine("PARABÉNS !!! VOCÊ ACERTOU SEU OPONENTE !!!");
                 entrada = true;
 
@@ -199,12 +219,9 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 Console.ReadKey();
                 entrada = true;
             }
-
-
-            tabuleiro.Exibicao();
+            
 
         } while (entrada == true && jogador1.Vida > 0);
-
     }
 }
 
