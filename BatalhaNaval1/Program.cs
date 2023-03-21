@@ -72,7 +72,7 @@ jogador2.Nome = Console.ReadLine().ToUpper();
 
 //tabuleiro.Exibicao();
 
-//tabuleiro.ExibirTeste();
+
 int cont = 0;
 
 while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
