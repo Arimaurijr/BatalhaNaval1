@@ -150,6 +150,78 @@ namespace BatalhaNaval1
             } 
         }
 
+        public void ExibirTabuleiroA()
+        {
+            Console.WriteLine("\nPosições do Jogador 1\n");
+            Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+   "||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
+            for (int linha = 0; linha < Dimensoes.LINHA; linha++)
+            {
+
+                if (linha <= 9)
+                {
+                    //Console.WriteLine();
+                    Console.Write($" {linha}-");
+                }
+                else
+                {
+                    //Console.WriteLine();
+                    Console.Write($"{linha}-");
+                }
+
+                for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
+                {
+                    if (tabuleiro[linha, coluna] == 'd' || tabuleiro[linha, coluna] == 's' || tabuleiro[linha, coluna] == 'p' || tabuleiro[linha, coluna] == '.')
+                    {
+                        //Console.Write("." + " ");
+                        Console.Write($"|  .  |");
+                    }
+                    else
+                    {
+                        //Console.Write(tabuleiro[linha, coluna] + " ");
+                        Console.Write($"|  {tabuleiro[linha, coluna]}  |");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+        public void ExibirTabuleiroB()
+        {
+            Console.WriteLine("\nPosições do Jogador 2\n");
+            Console.WriteLine("      A  ||  B  ||  C  ||  D  ||  E  ||  F  ||  G  ||  H  ||  I  ||  J  ||  K  ||  L  " +
+"||  M  ||  N  ||  O  ||  P  ||  Q  ||  R  ||  S  ||  T  |");
+
+            for (int linha = 0; linha < Dimensoes.LINHA; linha++)
+            {
+                if (linha <= 9)
+                {
+                    //Console.WriteLine();
+                    Console.Write($" {linha}-");
+                }
+                else
+                {
+                    //Console.WriteLine();
+                    Console.Write($"{linha}-");
+                }
+
+
+                for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
+                {
+                    if (tabuleiro[linha, coluna] == 'D' || tabuleiro[linha, coluna] == 'S' || tabuleiro[linha, coluna] == 'P' || tabuleiro[linha, coluna] == '.')
+                    {
+                        //Console.Write("." + " ");
+                        Console.Write($"|  .  |");
+                    }
+                    else
+                    {
+                        //Console.Write(tabuleiro[linha, coluna] + " ");
+                        Console.Write($"|  {tabuleiro[linha, coluna]}  |");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
         public void Inicializacao()
         {
             for (int linha = 0; linha < Dimensoes.LINHA; linha++)

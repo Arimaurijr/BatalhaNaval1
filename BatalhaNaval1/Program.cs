@@ -71,7 +71,8 @@ jogador2.Nome = Console.ReadLine();
 
 
 //tabuleiro.Exibicao();
-
+tabuleiro.ExibirTabuleiroA();
+tabuleiro.ExibirTabuleiroB();
 
 int cont = 0;
 
