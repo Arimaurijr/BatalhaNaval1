@@ -137,7 +137,7 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
 
             ataque = jogador1.Atacar(linha, coluna);
-
+            flag = false;
             if (ataque == 1 || ataque == 0)
             {
                 if (ataque == 1)
@@ -145,8 +145,6 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                     Console.Write("VOCÊ ATIROU NA PRÓPRIA EMBARCAÇÃO.CONTINUE... !!!");
                     Console.ReadKey();
                 }
-
-                entrada = false;
             }
             if (ataque == 2)
             {
@@ -163,7 +161,6 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 Console.WriteLine();
                 Console.WriteLine($"Essa posição já foi preenchida jogador {jogador1.Nome}.");
                 entrada = true;
-                flag = false;
             }
 
         } while (entrada == true && jogador2.Vida > 0);
@@ -214,7 +211,7 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
             } while (coluna < 0 || coluna >= Dimensoes.COLUNA);
 
             ataque = jogador2.Atacar(linha, coluna);
-
+            flag = false;
             if (ataque == 2 || ataque == 0)
             {
                 if (ataque == 2)
@@ -241,7 +238,6 @@ while (jogador1.Vida > 0 && jogador2.Vida > 0) //verifica quem ganhou
                 Console.WriteLine();
                 Console.WriteLine($"# ESSA POSIÇÃO JÁ FOI PREENCHIDA - {jogador2.Nome}.");
                 entrada = true;
-                flag = false;
             }
 
 
