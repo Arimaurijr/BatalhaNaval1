@@ -126,7 +126,7 @@ namespace BatalhaNaval1
                     tabuleiro[linha, coluna] = '#';
                     break;
             }
-
+            tabuleiroUser[linha, coluna] = tabuleiro[linha, coluna];
             return verificacao;
         }
         public void ExibirTeste()
@@ -194,6 +194,7 @@ namespace BatalhaNaval1
             {
                 for (int coluna = 0; coluna < Dimensoes.COLUNA; coluna++)
                 {
+                    tabuleiroUser[linha, coluna] = '.';
                     tabuleiro[linha, coluna] = '.';
                 }
             }

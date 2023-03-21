@@ -6,6 +6,7 @@ using BatalhaNaval1;
 Tabuleiro tabuleiro = new Tabuleiro();
 tabuleiro.Inicializacao();
 
+
 //// INSTANCIAR JOGADOR
 Jogador jogador1 = new Jogador();
 Jogador jogador2 = new Jogador();
@@ -69,8 +70,6 @@ jogador1.Nome = Console.ReadLine().ToUpper();
 Console.Write("Digite o nome do jogador 2: ");
 jogador2.Nome = Console.ReadLine().ToUpper();
 
-
-//tabuleiro.Exibicao();
 
 
 int cont = 0;
